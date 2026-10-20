@@ -1,13 +1,22 @@
-import 'package:coffee/splash%20screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() {
+import 'core/constants.dart';
+import 'core/theme.dart';
+import 'screens/splash_screen.dart';
+import 'state/app_state.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Load saved session, favorites, cart and orders before the first frame.
+  await AppState.instance.init();
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   runApp(const CoffeeApp());
 }
 
-/// =======================================================
-/// 🔹 ROOT APP
-/// =======================================================
 class CoffeeApp extends StatelessWidget {
   const CoffeeApp({super.key});
 
@@ -15,15 +24,9 @@ class CoffeeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Coffee Taste',
-      theme: ThemeData(
-        fontFamily: 'Roboto',
-        scaffoldBackgroundColor: const Color(0xFFF8F5F2),
-        primaryColor: const Color(0xFF6F4E37),
-      ),
+      title: kAppName,
+      theme: AppTheme.light,
       home: const SplashScreen(),
     );
   }
 }
-
-

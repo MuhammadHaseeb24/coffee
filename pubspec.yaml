@@ -1,25 +1,23 @@
 name: coffee
-description: "A professional Coffee UI Flutter project"
+description: Coffee Taste - a coffee ordering app built with Flutter.
 publish_to: 'none'
-
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.10.1
+  sdk: '>=2.19.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.2.0
+  crypto: ^3.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^6.0.0
+  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
-
-  # 🔹 APP IMAGES (PNG)
   assets:
     - assets/images/
